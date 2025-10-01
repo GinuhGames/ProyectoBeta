@@ -63,7 +63,7 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - _Centro_Espiral: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 1.0577029, g: 5.3403134, b: 0.025190217, a: 1}
+    - _Color: {r: 1.2001324, g: 5.836976, b: 0.43307644, a: 1}
     - _Tiling_Textura: {r: 0.51, g: 0.2, b: 0, a: 0}
     - _Velocidad_Espiral: {r: 0, g: 0, b: 0, a: 0}
     - _Velocidad_Ruido: {r: 0.48, g: 0, b: 0, a: 0}
