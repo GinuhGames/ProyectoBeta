@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Resumen: Este script genera un mapa aleatorio al inicio del juego para una chatarrería. Toma una lista de puntos de spawn (GameObjects vacíos) y una lista de prefabs. De forma aleatoria, selecciona un subconjunto de estos puntos y instancia prefabs aleatorios en ellos, asegurando que al menos un número mínimo especificado de prefabs aparezca para evitar un mapa vacío. Es escalable, permitiendo agregar más puntos y prefabs fácilmente desde el Inspector de Unity.
+// Resumen: Este script genera un mapa aleatorio al inicio del juego para una chatarrería. Toma una lista de puntos de spawn (GameObjects vacíos) y una lista de prefabs. De forma aleatoria, selecciona un subconjunto de estos puntos y instancia prefabs aleatorios en ellos, asegurando que al menos un número mínimo especificado de prefabs aparezca para evitar un mapa vacío. Los prefabs instanciados se agrupan como hijos de un GameObject contenedor especificado. Es escalable, permitiendo agregar más puntos y prefabs fácilmente desde el Inspector de Unity.
 
 public class SC_GeneradorChatarreria : MonoBehaviour
 {
@@ -16,6 +16,10 @@ public class SC_GeneradorChatarreria : MonoBehaviour
     // Número mínimo de prefabs que deben aparecer en el mapa.
     [Tooltip("Especifica el número mínimo de prefabs que deben instanciarse (mínimo 0, máximo igual al número de puntos de spawn). Esto asegura que el mapa no quede vacío.")]
     public int minimoPrefabs = 1;
+
+    // GameObject contenedor donde se agruparán los prefabs instanciados.
+    [Tooltip("Arrastra aquí el GameObject vacío que actuará como padre de todos los prefabs instanciados. Si no se asigna, los prefabs se instanciarán sin un padre específico.")]
+    public GameObject contenedorPrefabs;
 
     void Start()
     {
@@ -48,9 +52,9 @@ public class SC_GeneradorChatarreria : MonoBehaviour
             // Elegir un prefab aleatorio de la lista.
             GameObject prefabAleatorio = prefabs[Random.Range(0, prefabs.Count)];
 
-            // Instanciar el prefab en la posición y rotación del punto de spawn.
-            // El padre será null para que sea independiente, pero puedes cambiarlo si prefieres que sea hijo de este objeto.
-            Instantiate(prefabAleatorio, puntosMezclados[i].position, puntosMezclados[i].rotation);
+            // Instanciar el prefab en la posición y rotación del punto de spawn, con el contenedor como padre.
+            // Si no hay contenedor asignado, se instancia sin padre.
+            Instantiate(prefabAleatorio, puntosMezclados[i].position, puntosMezclados[i].rotation, contenedorPrefabs != null ? contenedorPrefabs.transform : null);
         }
     }
 
