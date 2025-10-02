@@ -1,12 +1,15 @@
+// Script manager singleton: carga y verifica coincidencias de recetas basadas en ingredientes proporcionados.
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class SC_Receta_Manager : MonoBehaviour
 {
     public static SC_Receta_Manager Instance;  // Singleton para acceso fácil.
 
+    [Tooltip("Lista de todas las recetas disponibles (arrastra las ScriptableObjects aquí).")]
     [SerializeField] private List<SC_Recetas> allRecipes;  // todas las recetas
- 
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -14,7 +17,7 @@ public class SC_Receta_Manager : MonoBehaviour
 
     }
 
-    public SC_Recetas FindMatchingRecipe(List<string> ingredients)
+    public SC_Recetas FindMatchingRecipe(List<SC_Item> ingredients)
     {
         foreach (var recipe in allRecipes)
         {
@@ -26,19 +29,18 @@ public class SC_Receta_Manager : MonoBehaviour
         return null;  // No coincide con ninguna.
     }
 
-    private bool IngredientsMatch(List<string> required, List<string> provided)
+    private bool IngredientsMatch(List<SC_Item> required, List<SC_Item> provided)
     {
         if (required.Count != provided.Count) return false;
 
-        // Ordenamos para ignorar orden y comparamos sets.
-        required.Sort();
-        provided.Sort();
-        for (int i = 0; i < required.Count; i++)
+        // Ordenamos por nombre del item para ignorar orden y comparamos.
+        var reqSorted = required.OrderBy(r => r.itemName).ToList();
+        var provSorted = provided.OrderBy(p => p.itemName).ToList();
+
+        for (int i = 0; i < reqSorted.Count; i++)
         {
-            if (required[i] != provided[i]) return false;
+            if (reqSorted[i].itemName != provSorted[i].itemName) return false;
         }
         return true;
-
- 
     }
 }

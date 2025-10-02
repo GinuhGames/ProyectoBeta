@@ -16,6 +16,6 @@ MonoBehaviour:
   icon: {fileID: 0}
   resultPrefab: {fileID: 1548264185024404626, guid: d69dc790eff052d4b842d3fb9f99b6b7, type: 3}
   requiredIngredients:
-  - 
-  - 
-  - 
+  - {fileID: 11400000, guid: 8ae0373e1fc0c7d48948514b1458aa72, type: 2}
+  - {fileID: 11400000, guid: 0acde4ddd7eb1ab438279c0a526d4de5, type: 2}
+  - {fileID: 11400000, guid: 2fa848b82688f9945a7f885c9a985001, type: 2}

@@ -1,34 +1,38 @@
+// Script que maneja el caldero: detecta ingredientes entrantes, almacena referencias y verifica recetas al activar el crafting.
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;  // Si usas botón UI.
 
 public class SC_Trigger_Caldero : MonoBehaviour
 {
     private List<GameObject> currentObjects = new List<GameObject>();  // Objetos físicos dentro.
-    private List<string> currentIngredients = new List<string>();     // IDs para chequeo.
+    private List<SC_Item> currentIngredients = new List<SC_Item>();     // Referencias a items para chequeo.
 
-    [SerializeField] private Button craftButton;  // Botón para craft (asigna en inspector).
+    [Tooltip("Donde instanciar el resultado del crafting.")]
     [SerializeField] private Transform spawnPoint;  // Donde instanciar el resultado.
+    [Tooltip("Segundos de espera antes de instanciar el resultado.")]
     [SerializeField] private float craftDelay = 3f;  // Segundos de espera.
+    [Tooltip("Set to true to simulate crafting button press.")]
+    [SerializeField] private bool startCrafting = false;
 
-    private void Start()
+    private void Update()
     {
-        if (craftButton != null)
+        if (startCrafting)
         {
-            craftButton.onClick.AddListener(OnCraftButtonPressed);
+            OnCraftButtonPressed();
+            startCrafting = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         SC_Ingredientes item = other.GetComponent<SC_Ingredientes>();
-        if (item != null)
+        if (item != null && item.itemType != null)
         {
             currentObjects.Add(other.gameObject);
-            currentIngredients.Add(item.itemID);
+            currentIngredients.Add(item.itemType);
             // Opcional: Desactivar physics o mover a una posición fija dentro del caldero.
             other.GetComponent<Rigidbody>().isKinematic = true;  // Para que no se mueva.
-            Debug.Log($"Añadido: {item.itemID}");
+            Debug.Log($"Añadido: {item.itemType.itemName}");
         }
     }
 

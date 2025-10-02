@@ -1,7 +1,8 @@
+// Script componente para ingredientes: referencia al tipo de item (ScriptableObject) para identificación.
 using UnityEngine;
 
 public class SC_Ingredientes : MonoBehaviour
 {
-    public string itemID;  // ID único, como "Apple", "Sword", etc. Asigna en el prefab o inspector.
-
+    [Tooltip("Referencia al ScriptableObject que define este tipo de item.")]
+    public SC_Item itemType;  // Referencia al SO del item.
 }
