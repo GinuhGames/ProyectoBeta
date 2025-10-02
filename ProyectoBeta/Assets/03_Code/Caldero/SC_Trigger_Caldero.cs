@@ -32,6 +32,13 @@ public class SC_Trigger_Caldero : MonoBehaviour
         SC_Ingredientes item = other.GetComponent<SC_Ingredientes>();
         if (item != null && item.itemType != null)
         {
+            // Evitar añadir el mismo GameObject más de una vez.
+            if (currentObjects.Contains(other.gameObject))
+            {
+                Debug.Log($"El objeto {item.itemType.itemName} ya está en el caldero, ignorado.");
+                return;
+            }
+
             currentObjects.Add(other.gameObject);
             currentIngredients.Add(item.itemType);
             Debug.Log($"Añadido: {item.itemType.itemName}");

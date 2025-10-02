@@ -14,7 +14,6 @@ public class SC_Receta_Manager : MonoBehaviour
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
-
     }
 
     public SC_Recetas FindMatchingRecipe(List<SC_Item> ingredients)

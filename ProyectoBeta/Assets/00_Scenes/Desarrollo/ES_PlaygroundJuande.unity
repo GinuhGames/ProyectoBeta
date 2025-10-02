@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SC_Receta_Manager
   allRecipes:
   - {fileID: 11400000, guid: 4492d475c46933b4fa632063ddaa6bab, type: 2}
+  - {fileID: 11400000, guid: f887bb8244268ec4ba8442a950f67dfb, type: 2}
 --- !u!4 &99365450
 Transform:
   m_ObjectHideFlags: 0
@@ -165,6 +166,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &317879649
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893444295111543384, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3450025678604244458, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: itemType
+      value: 
+      objectReference: {fileID: 11400000, guid: 0acde4ddd7eb1ab438279c0a526d4de5, type: 2}
+    - target: {fileID: 4813854637240576121, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_Name
+      value: Ojos (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813854637240576121, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
 --- !u!1 &806959917
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pelo
       objectReference: {fileID: 0}
+    - target: {fileID: 6416794560877138644, guid: 45d616240c50a6f44b2a7a914a3d7fac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -849,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 4813854637240576121, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
       propertyPath: m_Name
       value: Ojos
+      objectReference: {fileID: 0}
+    - target: {fileID: 4813854637240576121, guid: 8768e4cb5647c374f861e29d21c8748f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -911,6 +985,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabano
       objectReference: {fileID: 0}
+    - target: {fileID: 6698668772358294839, guid: 4acb0354d60e5fa488aea289a8a72dd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -931,3 +1009,4 @@ SceneRoots:
   - {fileID: 7396109780554250170}
   - {fileID: 9133370847563504721}
   - {fileID: 7604356573989585452}
+  - {fileID: 317879649}
