@@ -319,6 +319,8 @@ Transform:
   m_LocalScale: {x: 1.6766576, y: 1.6766574, z: 1.6766576}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 445522145738875738}
+  - {fileID: 5559280363027685317}
   - {fileID: 5963895282317949704}
   - {fileID: 5534132577040450552}
   - {fileID: 8214329127955368379}
@@ -326,8 +328,6 @@ Transform:
   - {fileID: 5915986091522570337}
   - {fileID: 7667863438409680438}
   - {fileID: 8982301437482249506}
-  - {fileID: 445522145738875738}
-  - {fileID: 5559280363027685317}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &6613311991419962562
@@ -5597,6 +5597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f24bc9517ba20498371d53cb6d295b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_Trigger_Caldero
+  currentObjects: []
+  currentIngredients: []
   spawnPoint: {fileID: 5559280363027685317}
   craftDelay: 3
   startCrafting: 0
+  successParticles: {fileID: 0}
+  failureParticles: {fileID: 0}
