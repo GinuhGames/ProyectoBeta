@@ -1,4 +1,4 @@
-// Script que maneja el caldero: detecta ingredientes entrantes, almacena referencias y verifica recetas al activar el crafting.
+// Script que maneja el caldero: detecta ingredientes entrantes, almacena referencias, verifica recetas al activar el crafting, y controla indicadores visuales.
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,10 @@ public class SC_Trigger_Caldero : MonoBehaviour
     [SerializeField] private ParticleSystem successParticles;
     [Tooltip("Sistema de partículas para fracaso en crafting (componente en la escena, reproducido en spawnPoint).")]
     [SerializeField] private ParticleSystem failureParticles;
+    [Tooltip("GameObject que se muestra cuando hay ingredientes en el caldero (componente en la escena).")]
+    [SerializeField] private GameObject ingredientsIndicator;
+    [Tooltip("GameObject que se muestra durante el proceso de crafting (componente en la escena).")]
+    [SerializeField] private GameObject craftingIndicator;
 
     private void Update()
     {
@@ -42,6 +46,12 @@ public class SC_Trigger_Caldero : MonoBehaviour
             currentObjects.Add(other.gameObject);
             currentIngredients.Add(item.itemType);
             Debug.Log($"Añadido: {item.itemType.itemName}");
+
+            // Activar indicador de ingredientes si es el primer ingrediente.
+            if (currentIngredients.Count == 1 && ingredientsIndicator != null)
+            {
+                ingredientsIndicator.SetActive(true);
+            }
         }
     }
 
@@ -49,11 +59,17 @@ public class SC_Trigger_Caldero : MonoBehaviour
     {
         if (currentIngredients.Count == 0) return;
 
+        // Activar indicador de crafting.
+        if (craftingIndicator != null)
+        {
+            craftingIndicator.SetActive(true);
+        }
+
         SC_Recetas matchingRecipe = SC_Receta_Manager.Instance.FindMatchingRecipe(currentIngredients);
 
         if (matchingRecipe != null)
         {
-            // Borrar ingredientes.
+            // Borrar ingredientes (sin desactivar ingredientsIndicator aún).
             ClearCauldron();
 
             // Esperar unos segundos e instanciar.
@@ -70,7 +86,17 @@ public class SC_Trigger_Caldero : MonoBehaviour
                 failureParticles.Play();
             }
 
-            ClearCauldron();  // O no, dependiendo de tu diseño.
+            // Desactivar indicadores.
+            if (craftingIndicator != null)
+            {
+                craftingIndicator.SetActive(false);
+            }
+            if (ingredientsIndicator != null)
+            {
+                ingredientsIndicator.SetActive(false);
+            }
+
+            ClearCauldron();
         }
     }
 
@@ -85,6 +111,16 @@ public class SC_Trigger_Caldero : MonoBehaviour
         if (successParticles != null)
         {
             successParticles.Play();
+        }
+
+        // Desactivar indicadores.
+        if (craftingIndicator != null)
+        {
+            craftingIndicator.SetActive(false);
+        }
+        if (ingredientsIndicator != null)
+        {
+            ingredientsIndicator.SetActive(false);
         }
 
         Debug.Log($"Creado: {recipe.recipeName}");
