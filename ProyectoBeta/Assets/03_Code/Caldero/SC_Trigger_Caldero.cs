@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SC_Trigger_Caldero : MonoBehaviour
 {
-    private List<GameObject> currentObjects = new List<GameObject>();  // Objetos físicos dentro.
-    private List<SC_Item> currentIngredients = new List<SC_Item>();     // Referencias a items para chequeo.
+    [SerializeField] private List<GameObject> currentObjects = new List<GameObject>();  // Objetos físicos dentro (visible y editable en Inspector).
+    [SerializeField] private List<SC_Item> currentIngredients = new List<SC_Item>();     // Referencias a items para chequeo (visible y editable en Inspector).
 
     [Tooltip("Donde instanciar el resultado del crafting.")]
     [SerializeField] private Transform spawnPoint;  // Donde instanciar el resultado.
@@ -13,6 +13,10 @@ public class SC_Trigger_Caldero : MonoBehaviour
     [SerializeField] private float craftDelay = 3f;  // Segundos de espera.
     [Tooltip("Set to true to simulate crafting button press.")]
     [SerializeField] private bool startCrafting = false;
+    [Tooltip("Sistema de partículas para éxito en crafting.")]
+    [SerializeField] private ParticleSystem successParticles;
+    [Tooltip("Sistema de partículas para fracaso en crafting.")]
+    [SerializeField] private ParticleSystem failureParticles;
 
     private void Update()
     {
@@ -30,8 +34,6 @@ public class SC_Trigger_Caldero : MonoBehaviour
         {
             currentObjects.Add(other.gameObject);
             currentIngredients.Add(item.itemType);
-            // Opcional: Desactivar physics o mover a una posición fija dentro del caldero.
-            other.GetComponent<Rigidbody>().isKinematic = true;  // Para que no se mueva.
             Debug.Log($"Añadido: {item.itemType.itemName}");
         }
     }
@@ -47,6 +49,9 @@ public class SC_Trigger_Caldero : MonoBehaviour
             // Borrar ingredientes.
             ClearCauldron();
 
+            // Reproducir partículas de éxito.
+            if (successParticles != null) successParticles.Play();
+
             // Esperar unos segundos e instanciar.
             StartCoroutine(CraftAfterDelay(matchingRecipe));
         }
@@ -54,6 +59,10 @@ public class SC_Trigger_Caldero : MonoBehaviour
         {
             // Fallo: Opcional, anima algo o devuelve items.
             Debug.Log("No coincide con ninguna receta.");
+
+            // Reproducir partículas de fracaso.
+            if (failureParticles != null) failureParticles.Play();
+
             ClearCauldron();  // O no, dependiendo de tu diseño.
         }
     }

@@ -580,6 +580,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5186704802539149227, guid: 41d1b2cdb4487714582809f201e123e6, type: 3}
+      propertyPath: failureParticles
+      value: 
+      objectReference: {fileID: 7722512997738387641, guid: a2a0d9cc0563db248bbe65ed25b229ac, type: 3}
+    - target: {fileID: 5186704802539149227, guid: 41d1b2cdb4487714582809f201e123e6, type: 3}
+      propertyPath: successParticles
+      value: 
+      objectReference: {fileID: 8978874523839247429, guid: 8fd4319253c2a3f488609408c718bffc, type: 3}
+    - target: {fileID: 5186704802539149227, guid: 41d1b2cdb4487714582809f201e123e6, type: 3}
+      propertyPath: currentObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6595427121570395734, guid: 41d1b2cdb4487714582809f201e123e6, type: 3}
       propertyPath: m_Name
       value: PF_Caldero
