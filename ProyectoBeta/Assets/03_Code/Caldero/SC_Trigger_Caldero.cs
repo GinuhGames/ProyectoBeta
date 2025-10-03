@@ -22,6 +22,8 @@ public class SC_Trigger_Caldero : MonoBehaviour
     [Tooltip("GameObject que se muestra durante el proceso de crafting (componente en la escena).")]
     [SerializeField] private GameObject craftingIndicator;
 
+    private Dictionary<GameObject, bool> originalEncantadoStates = new Dictionary<GameObject, bool>();  // Almacena estados originales de encantado para restaurar al salir.
+
     private void Update()
     {
         if (startCrafting)
@@ -43,6 +45,14 @@ public class SC_Trigger_Caldero : MonoBehaviour
                 return;
             }
 
+            // Manejar encantamiento: pausar si está encantado.
+            SC_Encantado encantado = other.GetComponent<SC_Encantado>();
+            if (encantado != null)
+            {
+                originalEncantadoStates[other.gameObject] = encantado.estaEncantado;
+                encantado.estaEncantado = false;
+            }
+
             currentObjects.Add(other.gameObject);
             currentIngredients.Add(item.itemType);
             Debug.Log($"Añadido: {item.itemType.itemName}");
@@ -51,6 +61,33 @@ public class SC_Trigger_Caldero : MonoBehaviour
             if (currentIngredients.Count == 1 && ingredientsIndicator != null)
             {
                 ingredientsIndicator.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        SC_Ingredientes item = other.GetComponent<SC_Ingredientes>();
+        if (item != null && currentObjects.Contains(other.gameObject))
+        {
+            // Restaurar encantamiento si aplica.
+            SC_Encantado encantado = other.GetComponent<SC_Encantado>();
+            if (encantado != null && originalEncantadoStates.ContainsKey(other.gameObject))
+            {
+                encantado.estaEncantado = originalEncantadoStates[other.gameObject];
+                originalEncantadoStates.Remove(other.gameObject);
+            }
+
+            // Remover de las listas.
+            int index = currentObjects.IndexOf(other.gameObject);
+            currentObjects.RemoveAt(index);
+            currentIngredients.RemoveAt(index);
+            Debug.Log($"Removido: {item.itemType.itemName}");
+
+            // Desactivar indicador si no hay más ingredientes.
+            if (currentIngredients.Count == 0 && ingredientsIndicator != null)
+            {
+                ingredientsIndicator.SetActive(false);
             }
         }
     }
@@ -130,6 +167,11 @@ public class SC_Trigger_Caldero : MonoBehaviour
     {
         foreach (var obj in currentObjects)
         {
+            // Limpiar estados guardados si aplica.
+            if (originalEncantadoStates.ContainsKey(obj))
+            {
+                originalEncantadoStates.Remove(obj);
+            }
             Destroy(obj);
         }
         currentObjects.Clear();

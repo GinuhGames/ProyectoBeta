@@ -9,7 +9,7 @@ using System.Collections;
 public class SC_Encantado : MonoBehaviour
 {
     [Tooltip("Indica si el objeto está encantado (puede desactivarse para detener el encantamiento).")]
-    [SerializeField] private bool estaEncantado = false;
+    [SerializeField] public bool estaEncantado = false;
 
     [Tooltip("Prefab del sistema de partículas para el efecto encantado (se instanciará en este objeto).")]
     [SerializeField] private ParticleSystem particulasPrefab;
