@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SC_Item
   itemName: Lechuga
   icon: {fileID: 0}
+  probabilidadEncantamiento: 100
+  intervaloMinimo: 5
+  intervaloMaximo: 10

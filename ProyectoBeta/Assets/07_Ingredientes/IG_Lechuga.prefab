@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5892793174766640222}
   - component: {fileID: 5382952116540881352}
   - component: {fileID: 7437569957109994476}
+  - component: {fileID: 7737328977363929347}
   m_Layer: 0
   m_Name: IG_Lechuga
   m_TagString: Untagged
@@ -153,3 +154,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_Ingredientes
   itemType: {fileID: 11400000, guid: 8ae0373e1fc0c7d48948514b1458aa72, type: 2}
+--- !u!114 &7737328977363929347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243184661626381691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c96d49773f05b4bba53d8bedf1ed47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_Encantado
+  estaEncantado: 0
+  particulasPrefab: {fileID: 3458050390251317700, guid: 165cb3fd87935b440b8aecb5fd03c26b, type: 3}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3349578482624391639}
   - component: {fileID: 6514753844593157757}
   - component: {fileID: 3213387441414056527}
+  - component: {fileID: 253642578648113602}
   m_Layer: 0
   m_Name: IG_Pelo
   m_TagString: Untagged
@@ -98,6 +99,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_Ingredientes
   itemType: {fileID: 11400000, guid: 2fa848b82688f9945a7f885c9a985001, type: 2}
+--- !u!114 &253642578648113602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2362876737538423625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c96d49773f05b4bba53d8bedf1ed47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_Encantado
+  estaEncantado: 0
+  particulasPrefab: {fileID: 3458050390251317700, guid: 165cb3fd87935b440b8aecb5fd03c26b, type: 3}
 --- !u!1 &6423369942242903993
 GameObject:
   m_ObjectHideFlags: 0

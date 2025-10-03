@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SC_Item
   itemName: Ojos
   icon: {fileID: 0}
+  probabilidadEncantamiento: 20
+  intervaloMinimo: 1
+  intervaloMaximo: 3

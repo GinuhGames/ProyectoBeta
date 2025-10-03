@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 1345501375809479966}
   - component: {fileID: 4109811127699982421}
   - component: {fileID: 6569702700610887458}
+  - component: {fileID: 3243195831983503142}
   m_Layer: 0
   m_Name: IG_Ojo
   m_TagString: Untagged
@@ -277,6 +278,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_Ingredientes
   itemType: {fileID: 11400000, guid: 0acde4ddd7eb1ab438279c0a526d4de5, type: 2}
+--- !u!114 &3243195831983503142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502397939697702482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c96d49773f05b4bba53d8bedf1ed47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SC_Encantado
+  estaEncantado: 0
+  particulasPrefab: {fileID: 3458050390251317700, guid: 165cb3fd87935b440b8aecb5fd03c26b, type: 3}
 --- !u!1 &4448438505530410317
 GameObject:
   m_ObjectHideFlags: 0
