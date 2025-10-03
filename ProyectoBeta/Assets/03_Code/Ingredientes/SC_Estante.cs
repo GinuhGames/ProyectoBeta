@@ -63,7 +63,7 @@ public class SC_Estante : MonoBehaviour
             // Limpiar texto.
             if (textoPrecio != null)
             {
-                textoPrecio.SetText("");
+                textoPrecio.SetText("----");
             }
 
             currentObject = null;
